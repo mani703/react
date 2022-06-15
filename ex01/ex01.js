@@ -1,4 +1,4 @@
-const a = 1234;
-a = 4321;
+const num = 1234;
+num = 4321;
 
-console.log(a);
+console.log(num);
