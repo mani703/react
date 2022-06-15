@@ -31,14 +31,25 @@ var arr1 = ['item1', 'item2', 'item3'];
 //     return ele === 'item2';
 // });
 
-let result5 = arr1.every(function(ele, idx, arr){
-    console.log(ele, idx, arr);
-    return true;
-});
+// let result5 = arr1.every(function(ele, idx, arr){
+//     console.log(ele, idx, arr);
+//     return true;
+// });
 
-let result6 = arr1.some(function(ele, idx, arr){
-    console.log(ele, idx, arr);
-    return true;
-});
-console.log(result6);
+// let result6 = arr1.some(function(ele, idx, arr){
+//     console.log(ele, idx, arr);
+//     return true;
+// });
+
+// let arr2 = [1, 3, 5, 7, 9];
+// let result7 = arr1.reduce(function(prev, ele, idx, arr){
+//     console.log(prev, ele, idx, arr);
+//     return prev + ', ' + ele;
+// });
+
+let arr3 = [1, 3, 5, 7];
+let arr4 = [2, 4, 6, 8];
+let arr5 = arr3.concat(arr4);
+let arr6= [].concat(arr3);
+console.log(arr5, arr3, arr4, arr6);
 
