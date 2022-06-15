@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Car from './Ex01';
+import Car from './ex01';
 
 // const myElement = React.createElement('h1', {}, 'I do not use JSX!');
 // const myElement = <h1>React is {5 + 5} times better with JSX</h1>;
