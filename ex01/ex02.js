@@ -1,6 +1,6 @@
-let a = 1234;
+let num = 1234;
 {
-    let a = 4321;
+    let num = 4321;
 }
 
-console.log(a);
+console.log(num);
