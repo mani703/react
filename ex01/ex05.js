@@ -35,7 +35,6 @@ let result5 = arr1.every(function(ele, idx, arr){
     console.log(ele, idx, arr);
     return true;
 });
-console.log(result5);
 
 let result6 = arr1.some(function(ele, idx, arr){
     console.log(ele, idx, arr);
