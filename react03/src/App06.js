@@ -7,7 +7,9 @@ export default function App06(props) {
     const [msg2, setMsg2] = useState("second");
     
     useEffect(function(){
-        console.log('useEffect....');
+        setTimeout(() => {
+            setMsg(msg + 1);
+        }, 3000);
     }, [msg, msg2]);
 
     const btnHandler = () => {
