@@ -49,7 +49,7 @@ export default function App04() {
                     <input name="pw" onChange={inputPw}/>
                 </label>
                 <label>
-                    <input type="checkbox" onChange={inputHander} value={chk}/>
+                    <input type="checkbox" onChange={inputHander} value={chk} checked={chk}/>
                 </label>
                 <div>
                     <input type='submit' value='전달' />
