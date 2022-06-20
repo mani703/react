@@ -1,30 +1,63 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Container} from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useContext, useEffect } from 'react';
+import UserCtxt, { LOGOUT } from './Store';
 
 function Menubar() {
+    const user = useContext(UserCtxt);
+
+    useEffect(() => {
+        
+    }, [])
+
+    const logoutHandler = (e) => {
+        e.preventDefault();
+        user.dispatch({type:LOGOUT});
+    }
 
     return (
         <>
-            <Navbar>
+            <Navbar bg="primary" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
-                    <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            Signed in as: <a href="#login">Mark Otto</a>
-                        </Navbar.Text>
-                    </Navbar.Collapse>
+                    <Navbar.Brand as={Link} to="/">비트교육센터</Navbar.Brand>
+                    <Nav className="me-auto">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link className='nav-link active' aria-current="page" to="/">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className='nav-link active' aria-current="page" to="/intro">Intro</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className='nav-link active' aria-current="page" to="/dept">List</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className='nav-link active' aria-current="page" to="/dept/add">Add</Link>
+                            </li>
+                            {user.state.result ?
+                            <>
+                                <li className="nav-item">
+                                    <Link className='nav-link active' aria-current="page" to="/logout" onClick={logoutHandler}>Logout</Link>
+                                </li>
+                                <p>{user.state.username}</p>
+                            </>
+                            :
+                            <>
+                                <li className="nav-item">
+                                    <Link className='nav-link active' aria-current="page" to="/login">Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className='nav-link active' aria-current="page" to="/join">Join</Link>
+                                </li>
+                            </>
+                            }   
+                        </ul>
+                        
+                    </Nav>
                 </Container>
             </Navbar>
-            {/* <nav style={barStyle}>
-                <Link to="/">Home</Link> | {" "}
-                <Link to="/intro">Intro</Link> | {" "}
-                <Link to="/dept">List</Link> | {" "}
-                <Link to="/dept/add">Add</Link> | {" "}
-                <Link to="/login">Login</Link> | {" "}
-            </nav> */}
         </>
     )
 }

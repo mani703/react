@@ -2,38 +2,33 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { Card, CardGroup, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function DeptList() {
   const [arr, setArr] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/dept')
-      .then(e => {setArr(e.data)})
-
+      .then(e => { setArr(e.data) })
   }, []);
 
   return (
-    <div>
+    <Container>
       <h1>List Login</h1>
-      <table className='table'>
-        <thead>
-          <tr>
-            <th>deptno</th>
-            <th>dname</th>
-            <th>loc</th>
-          </tr>
-        </thead>
-        <tbody>
-          {arr.map((bean, idx) => (
-            <tr key={idx}>
-              <td>{bean.deptno}</td>
-              <td>{bean.dname}</td>
-              <td>{bean.loc}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <CardGroup>
+        {arr.map((bean, idx) => (
+          <Card key={idx}>
+            <Card.Body>
+              <Card.Title>{bean.deptno}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{bean.dname}</Card.Subtitle>
+              <Card.Text>{bean.loc}</Card.Text>
+              <Card.Link as={Link} to={"/dept/"+bean.deptno}>Detail</Card.Link>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardGroup>
+    </Container>
   )
 }
 

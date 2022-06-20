@@ -8,21 +8,27 @@ import DeptAdd from './pages/DeptAdd';
 import LoginPage from './pages/LoginPage';
 import Join from './pages/Join';
 import Menubar from './modules/Menubar';
+import { useReducer } from 'react';
+import UserCtxt, { initialState, reducer } from './modules/Store';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
-    <BrowserRouter>
-      <Menubar/>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/intro" element={<Intro/>}/>
-        <Route path="/dept" element={<DeptList/>}/>
-        <Route path="/dept/:deptno" element={<DeptOne/>}/>
-        <Route path="/dept/add" element={<DeptAdd/>}/>
-        <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/join" element={<Join/>}/>
-      </Routes>
-    </BrowserRouter>
+    <UserCtxt.Provider value={{state ,dispatch}}>
+      <BrowserRouter>
+        <Menubar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/intro" element={<Intro />} />
+          <Route path="/dept" element={<DeptList />} />
+          <Route path="/dept/:deptno" element={<DeptOne />} />
+          <Route path="/dept/add" element={<DeptAdd />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/join" element={<Join />} />
+        </Routes>
+      </BrowserRouter>
+    </UserCtxt.Provider>
   );
 }
 
